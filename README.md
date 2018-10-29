@@ -6,5 +6,5 @@ config files must be copied:
 -  fail2ban-filter-rest.conf in /etc/fail2ban/filter.d/
 after copy the files fail2ban must be reloaded in order to work.
 
-install dependencies by running "npm install"
+install dependencies by running "npm install"  
 please use pm2 (http://pm2.keymetrics.io/) as process manager to control the service
