@@ -1,11 +1,6 @@
 /* fail2ban REST API server
  *  written for simply add/remove IPs from ban list from any application indipendent from the technogy used.
- * 
- *  config files must be copied:
- *  fail2ban_rest.conf in /etc/fail2ban/jail.d/
- *  fail2ban-filter-rest.conf in /etc/fail2ban/filter.d/
- *  after copy the files fail2ban must be reloaded in order to work
- * 
+ *
  *  (c)2018 hoverflow
  */
 
@@ -17,6 +12,7 @@ const {
 } = require('child_process');
 
 var banstring = ' set fail2ban-rest banip ';
+var unbanstring = ' set fail2ban-rest unbanip ';
 
 function sendBadRequest(res) {
     res.status(400).end('Bad request');
@@ -29,13 +25,20 @@ function banUnbanIP(ban, ip, res) {
                 console.error(err);
                 res.status(500).end('Internal server error.');
             } else {
-                console.log('stdout', stdout);
-                console.log('stderr', stderr);
+                console.log('ban ip response', stdout);
                 res.status(200).end('Ok');
             }
         });
     } else {
-        //TODO: unban
+        exec(config.fail2ban_cli + unbanstring + ip, function (err, stdout, stderr) {
+            if (err) {
+                console.error(err);
+                res.status(500).end('Internal server error.');
+            } else {
+                console.log('unban ip response', stdout);
+                res.status(200).end('Ok');
+            }
+        });
     }
 }
 
