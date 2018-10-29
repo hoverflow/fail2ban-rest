@@ -1,0 +1,5 @@
+{
+    "listenport": 4500,
+    "jail": "testjail",
+    "fail2ban_cli": "/usr/bin/fail2ban-client"
+}

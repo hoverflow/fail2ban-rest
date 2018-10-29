@@ -1,0 +1,23 @@
+{
+  "name": "fail2ban-rest",
+  "version": "0.1.0",
+  "description": "fail2ban REST API written in Node.JS",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github:hoverflow/fail2ban-rest.git"
+  },
+  "keywords": [
+    "fail2ban",
+    "rest",
+    "api"
+  ],
+  "author": "Jonathan Stevano",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
